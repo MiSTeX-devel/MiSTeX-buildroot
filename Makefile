@@ -1,6 +1,7 @@
 include misty.config
 
 BR2T_CONFIG = $(CURDIR)/out/$(BR2T_DEFCONFIG)/.config
+BR2T_DL_DIR ?= $(CURDIR)/out/dl
 BR2T_BR_DIR = $(CURDIR)/out/buildroot-$(BR2T_VERSION)
 BR2T_IMG_DIR = $(CURDIR)/out/images
 BR2T_UPD_DIR = $(CURDIR)/out/update
@@ -27,8 +28,11 @@ $(BR2T_EXTERNAL)/external.desc:
 	@echo 'name: $(BR2T_NAME)' > $(BR2T_EXTERNAL)/external.desc
 
 $(BR2T_BR_DIR):
-	@cp -r buildroot $(BR2T_BR_DIR)
-	@make -C $(BR2T_BR_DIR) clean
+	@mkdir -p $(BR2T_DL_DIR)
+	@wget -c $(BR2T_BR_URL)/$(BR2T_BR_FILE) \
+		-O $(BR2T_DL_DIR)/$(BR2T_BR_FILE)
+	@mkdir -p $(BR2T_BR_DIR)
+	@tar axf $(BR2T_DL_DIR)/$(BR2T_BR_FILE) -C $(BR2T_BR_DIR) --strip-components 1
 
 $(BR2T_CONFIG): $(BR2T_EXTERNAL)/external.desc $(BR2T_BR_DIR)
 	$(MAKE) -C out/buildroot-$(BR2T_VERSION) O=../$(BR2T_DEFCONFIG) \
