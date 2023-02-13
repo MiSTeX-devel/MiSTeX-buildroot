@@ -23,8 +23,9 @@ RUN apt-get install -y --no-install-recommends \
         python3-flake8 \
         python3-nose2 \
         python3-pexpect \
-        qemu-system-arm \
-        qemu-system-x86 \
+        mkbootimg \
+        mtools \
+        dosfstools \
         rsync \
         subversion \
         unzip \
