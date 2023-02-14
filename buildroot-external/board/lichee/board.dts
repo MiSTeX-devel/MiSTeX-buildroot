@@ -801,7 +801,7 @@
 			key2 = <590 139>;
 			key3 = <750 28>;
 			key4 = <880 172>;
-			status = "okay";
+			status = "disabled";
 		};
 
 		sid@3006000 {
