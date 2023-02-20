@@ -1,1 +1,1 @@
-# Example: source "buildroot-external/package/package1/Config.in"
+source package/Config.in

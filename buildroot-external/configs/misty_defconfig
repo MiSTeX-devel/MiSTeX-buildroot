@@ -1,6 +1,11 @@
 #
-# Automatically generated file; DO NOT EDIT.
-# Buildroot -g9535805 Configuration
+# Default config for MiSTy
+
+# out of tree packages
+BR2_PACKAGE_OPENFPGALOADER=n
+BR2_PACKAGE_MYOPENFPGALOADER=y
+
+#
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -161,7 +166,7 @@ BR2_TOOLCHAIN_EXTERNAL_GLIBC=y
 BR2_PACKAGE_HAS_TOOLCHAIN_EXTERNAL=y
 BR2_PACKAGE_PROVIDES_TOOLCHAIN_EXTERNAL="toolchain-external-custom"
 BR2_TOOLCHAIN_EXTERNAL_PREFIX="$(ARCH)-unknown-linux-gnu"
-BR2_TOOLCHAIN_EXTERNAL_URL="https://weidongshan.coding.net/p/Tina-D1/d/Toolchain/git/raw/master/riscv64-glibc-gcc-thead_20200702.tar.xz"
+BR2_TOOLCHAIN_EXTERNAL_URL="https://gitlab.com/weidongshan/Toolchain/-/raw/master/riscv64-glibc-gcc-thead_20200702.tar.xz"
 BR2_TOOLCHAIN_EXTERNAL_REL_BIN_PATH="bin"
 BR2_TOOLCHAIN_EXTERNAL_CUSTOM_PREFIX="$(ARCH)-unknown-linux-gnu"
 # BR2_TOOLCHAIN_EXTERNAL_GCC_10 is not set

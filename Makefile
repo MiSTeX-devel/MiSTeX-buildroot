@@ -29,10 +29,8 @@ $(BR2T_EXTERNAL)/external.desc:
 
 $(BR2T_BR_DIR):
 	@mkdir -p $(BR2T_DL_DIR)
-	@wget -c $(BR2T_BR_URL)/$(BR2T_BR_FILE) \
-		-O $(BR2T_DL_DIR)/$(BR2T_BR_FILE)
 	@mkdir -p $(BR2T_BR_DIR)
-	@tar axf $(BR2T_DL_DIR)/$(BR2T_BR_FILE) -C $(BR2T_BR_DIR) --strip-components 1
+	@git clone --depth 1 $(BR2T_BR_URL)/$(BR2T_BR_FILE) $(BR2T_BR_DIR)
 
 $(BR2T_CONFIG): $(BR2T_EXTERNAL)/external.desc $(BR2T_BR_DIR)
 	$(MAKE) -C out/buildroot-$(BR2T_VERSION) O=../$(BR2T_DEFCONFIG) \
