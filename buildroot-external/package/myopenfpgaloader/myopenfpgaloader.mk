@@ -1,12 +1,6 @@
-################################################################################
-#
-# openFPGALoader
-#
-################################################################################
-
 MYOPENFPGALOADER_VERSION = 0.10.0
 MYOPENFPGALOADER_SOURCE = v$(MYOPENFPGALOADER_VERSION).tar.gz
-MYOPENFPGALOADER_SITE = https://github.com/trabucayre/openFPGALoader/archive/refs/tags/
+MYOPENFPGALOADER_SITE = https://github.com/trabucayre/openFPGALoader/archive/refs/tags
 MYOPENFPGALOADER_SITE_METHOD = wget
 MYOPENFPGALOADER_INSTALL_STAGING = YES
 MYOPENFPGALOADER_LICENSE = Apache-2.0

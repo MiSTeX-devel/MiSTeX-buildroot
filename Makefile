@@ -23,7 +23,7 @@ $(BR2T_EXTERNAL)/external.desc:
 	@mkdir -p $(BR2T_EXTERNAL)/board
 	@mkdir -p $(BR2T_EXTERNAL)/configs
 	@mkdir -p $(BR2T_EXTERNAL)/package
-	@echo '# Example: source "$(BR2T_EXTERNAL)/package/package1/Config.in"' > \
+	@echo 'source "$(CURDIR)/$(BR2T_EXTERNAL)/package/myopenfpgaloader/Config.in"' > \
 		$(BR2T_EXTERNAL)/Config.in
 	@echo 'name: $(BR2T_NAME)' > $(BR2T_EXTERNAL)/external.desc
 

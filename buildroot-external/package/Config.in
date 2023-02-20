@@ -1,3 +1,0 @@
-menu "MISTY Packages"
-    source "package/myopenfpgaloader/Config.in"
-endmenu
