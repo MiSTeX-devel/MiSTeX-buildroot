@@ -5,7 +5,8 @@
 case "$1" in
 	start)
 		echo "Starting MiSTer"
-		start-stop-daemon -S -m -p /var/run/mister.pid -x /bin/nice -n -19 /media/fat/MiSTer
+		openFPGALoader -c dirtyJtag /media/fat/menu.rbf
+		start-stop-daemon -S -m --background -p /var/run/mister.pid -x /bin/nice -n -19 /media/fat/MiSTer
 		exit $?
 		;;
 
@@ -25,4 +26,3 @@ case "$1" in
 		echo "Usage: $0 {start|stop|restart}"
 		exit 1
 esac
-# 
