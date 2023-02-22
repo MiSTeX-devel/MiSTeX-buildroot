@@ -1,4 +1,9 @@
-include misty.config
+iBR2T_NAME := misty
+
+BR2T_BR_URL := https://gitee.com/weidongshan/neza-d1-buildroot
+BR2T_VERSION := lichee
+BR2T_EXTERNAL := buildroot-external
+BR2T_DEFCONFIG := misty
 
 BR2T_CONFIG = $(CURDIR)/out/$(BR2T_DEFCONFIG)/.config
 BR2T_DL_DIR ?= $(CURDIR)/out/dl
@@ -42,7 +47,7 @@ $(BR2T_RECOVERY_CONFIG):
 		BR2_EXTERNAL=$(CURDIR)/$(BR2T_EXTERNAL) $(BR2T_RECOVERY_DEFCONFIG)_defconfig
 
 $(BR2T_DEFCONFIG) $(BR2T_RECOVERY_DEFCONFIG): $(BR2T_CONFIG) $(BR2T_RECOVERY_CONFIG)
-	$(MAKE) -C out/$@ $(subst $@,,$(MAKECMDGOALS))
+	$(MAKE) -C out/$@ BR2_EXTERNAL=$(CURDIR)/$(BR2T_EXTERNAL) $(subst $@,,$(MAKECMDGOALS))
 
 image: $(BR2T_CONFIG) $(BR2T_RECOVERY_CONFIG)
 	BR2_DL_DIR=$(BR2T_DL_DIR) BR2_JLEVEL=$(BR2T_JLEVEL) \
