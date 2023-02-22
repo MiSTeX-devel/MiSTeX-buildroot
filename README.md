@@ -5,6 +5,8 @@ of MiSTy
 
 ## Building
 ```
+  git submodule init
+  git submodule update
   make docker-image
   make rootshell
   make image
