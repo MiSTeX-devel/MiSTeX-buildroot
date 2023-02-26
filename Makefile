@@ -1,4 +1,4 @@
-iBR2T_NAME := misty
+BR2T_NAME := misty
 
 BR2T_BR_URL := https://gitee.com/weidongshan/neza-d1-buildroot
 BR2T_VERSION := lichee
