@@ -1,0 +1,50 @@
+--- a/drivers/spi/spi-sunxi.c	2021-07-06 14:58:07.000000000 +0700
++++ b/drivers/spi/spi-sunxi.c	2021-07-06 14:58:07.000000000 +0700
+@@ -73,6 +73,15 @@
+ 	MODE_TYPE_NULL,
+ };
+ 
++enum spi_sample_delay {
++	DEFAULT_SAMPLE_DELAY,
++	NO_SAMPLE_DELAY,
++	HALF_CYCLE_SAMPLE_DELAY,
++	FULL_CYCLE_SAMPLE_DELAY,
++};
++
++static u32 sample_delay = HALF_CYCLE_SAMPLE_DELAY;
++
+ #if IS_ENABLED(CONFIG_DMA_ENGINE)
+ 
+ #define SPI_MAX_PAGES	100
+@@ -1201,12 +1210,23 @@
+ 
+ 	spi_speed_hz  = (t && t->speed_hz) ? t->speed_hz : spi->max_speed_hz;
+ 
++	switch (sample_delay) {
++		case NO_SAMPLE_DELAY:
++			spi_sample_delay(1, 0, base_addr); break;
++		case HALF_CYCLE_SAMPLE_DELAY:
++			spi_sample_delay(0, 0, base_addr); break;
++		case FULL_CYCLE_SAMPLE_DELAY:
++			spi_sample_delay(0, 1, base_addr); break;
++		default: {
+ 	if (spi_speed_hz >= SPI_HIGH_FREQUENCY)
+ 		spi_sample_delay(0, 1, base_addr);
+ 	else if (spi_speed_hz <= SPI_LOW_FREQUENCY)
+ 		spi_sample_delay(1, 0, base_addr);
+ 	else
+ 		spi_sample_delay(0, 0, base_addr);
++			break;
++		}
++	}
+ 
+ #if IS_ENABLED(CONFIG_EVB_PLATFORM)
+ 	spi_set_clk(spi_speed_hz, clk_get_rate(sspi->mclk), sspi);
+@@ -2680,6 +2700,7 @@
+ fs_initcall_sync(sunxi_spi_init);
+ module_exit(sunxi_spi_exit);
+ module_param_named(debug, debug_mask, int, 0664);
++module_param(sample_delay, int, 0644);
+ 
+ MODULE_AUTHOR("pannan");
+ MODULE_DESCRIPTION("SUNXI SPI BUS Driver");
