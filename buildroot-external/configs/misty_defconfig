@@ -1,5 +1,5 @@
 #
-# Default config for MiSTy
+# Default config for MiSTeX
 
 # out of tree packages
 BR2_PACKAGE_OPENFPGALOADER=n

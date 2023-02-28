@@ -1,7 +1,7 @@
-# MiSTy buildroot
+# MiSTeX buildroot
 
 Creates the SD card image for the Linux root filesystem
-of MiSTy
+of MiSTeX
 
 ## Building
 ```
