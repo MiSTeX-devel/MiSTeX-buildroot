@@ -11,7 +11,7 @@
 +	FULL_CYCLE_SAMPLE_DELAY,
 +};
 +
-+static u32 sample_delay = HALF_CYCLE_SAMPLE_DELAY;
++static u32 sample_delay = DEFAULT_SAMPLE_DELAY;
 +
  #if IS_ENABLED(CONFIG_DMA_ENGINE)
  
