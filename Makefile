@@ -1,6 +1,6 @@
 BR2T_NAME := mistex
 
-BR2T_BR_URL := https://gitee.com/weidongshan/neza-d1-buildroot
+BR2T_BR_URL := https://github.com/buildroot/buildroot
 BR2T_VERSION := lichee
 BR2T_EXTERNAL := buildroot-external
 BR2T_DEFCONFIG := mistex
@@ -85,18 +85,6 @@ endif
 distclean:
 	rm -rf out
 
-docker-image:
-	docker build -t "$(BR2T_NAME)" .
-
-docker:
-	docker run -v $$PWD:/home/br-user "$(BR2T_NAME)" make $(subst $@,,$(MAKECMDGOALS))
-
-shell:
-	docker run -v $$PWD:/home/br-user -u br-user -it "$(BR2T_NAME)" bash
-
-rootshell:
-	docker run -v $$PWD:/home/br-user -u root -it "$(BR2T_NAME)" bash
-
 %:
 	@:
 
@@ -109,7 +97,6 @@ help:
 ifneq ($(BR2T_RECOVERY_DEFCONFIG),)
 	@echo '  update                 - produces an update swu file in $(BR2T_UPD_DIR)'
 endif
-	@echo '  withdocker             - builds using docker'
 	@echo
 	@echo 'Cleaning'
 	@echo '  clean                  - removes everything but keeps dl folder'

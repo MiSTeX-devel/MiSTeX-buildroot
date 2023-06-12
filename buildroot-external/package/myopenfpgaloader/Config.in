@@ -1,5 +1,11 @@
 config BR2_PACKAGE_MYOPENFPGALOADER
 	bool "myopenfpgaloader"
+	depends on BR2_TOOLCHAIN_HAS_THREADS # libftdi1
+	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_9 # libftdi1 -> libusb
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_LIBFTDI1
+	select BR2_PACKAGE_ZLIB
 	help
 	  Universal utility for programming FPGAs.
 	  Compatible with many boards, cables and FPGA from major manufacturers

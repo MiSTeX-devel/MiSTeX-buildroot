@@ -1,1 +1,1 @@
-source "/home/br-user/buildroot-external/package/myopenfpgaloader/Config.in"
+source "../../buildroot-external/package/myopenfpgaloader/Config.in"
