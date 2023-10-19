@@ -1,5 +1,5 @@
 [submodule "buildroot-external/board/lichee/overlay/media/fat"]
-	path = lichee/buildroot-external/board/lichee/overlay/media/fat
+	path = Distribution_MiSTeX
 	url = https://github.com/MiSTeX-devel/Distribution_MiSTeX
 [submodule "rpi-zero/buildroot"]
 	path = rpi-zero/buildroot
