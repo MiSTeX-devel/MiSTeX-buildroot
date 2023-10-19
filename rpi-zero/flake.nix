@@ -32,7 +32,38 @@
           pkgs = nixpkgsFor.${system};
           inherit (pkgs) lib callPackage stdenv fetchgit fetchFromGitHub;
         in rec {
-          mistex-buildroot = callPackage ./nix/mistex-buildroot.nix { };
+          mistex-buildroot = stdenv.mkDerivation rec {
+            pname = "mistex-buildroot";
+            version = "0.0.0";
+            
+            src = self;
+
+            nativeBuildInputs = [ ];
+            buildInputs = [ ];
+
+            buildPhase = ''
+              mkdir -p $out
+              cd ${src}/rpi-zero/buildroot
+              make O=${src}/rpi-zero/buildroot/output BR2_EXTERNAL=../buildroot-external mistex_defconfig
+              make O=${src}/rpi-zero/buildroot/output BR2_EXTERNAL=../buildroot-external sdk
+            '';
+
+            installPhase = ''
+              mkdir -p $out
+              cp ${src}/buildroot/output/images/sdcard.img $out/
+              cp ${src}/buildroot/output/images/*sdk*gz $out/
+            '';
+
+            meta = with lib; {
+              homepage = "https://github.com/MiSTeX-devel/MiSTeX-buildroot";
+              description = ''
+                embedded Linux firmware and SDK for the MiSTeX project
+              '';
+              licencse = licenses.mit;
+              platforms = with platforms; linux;
+              maintainers = [ maintainers.hansfbaier ];    
+            };
+          };
           default = mistex-buildroot;
         });
 
