@@ -4,6 +4,10 @@ case "$1" in
 	start)
 		echo "Starting SPI"
 	        /sbin/modprobe spidev
+			# This is actually spidev0.0,
+			# which is automatically created
+			# but we alias it to this one too 
+			# to make it consistent with the Allwinner D1
 	        /bin/mknod /dev/spidev1.0 c 153 0
 		exit $?
 		;;
