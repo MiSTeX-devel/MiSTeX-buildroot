@@ -4,6 +4,7 @@ case "$1" in
 	start)
 		echo "Starting SPI"
 	        /sbin/modprobe spidev
+	        /bin/mknod /dev/spidev1.0 c 153 0
 		exit $?
 		;;
 

@@ -1,2 +1,0 @@
-KERNEL=="spidev0.0", OWNER="root"
-KERNEL=="spidev0.1", OWNER="root"
