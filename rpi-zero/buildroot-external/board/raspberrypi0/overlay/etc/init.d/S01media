@@ -2,14 +2,15 @@
 
 case "$1" in
 	start)
-		echo "Starting SPI"
-	        /sbin/modprobe spidev
+		echo "Mounting /media/fat"
+		mkdir -p /media/fat
+		/bin/mount /dev/mmcblk0p3 /media/fat
 		exit $?
 		;;
 
 	stop)
-		echo "Stopping SPI"
-		/sbin/rmmod spidev
+		echo "Unmounting /media/fat"
+		/bin/umount /media/fat
 		exit $?
 		;;
 
