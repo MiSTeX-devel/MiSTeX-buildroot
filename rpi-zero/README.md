@@ -16,3 +16,10 @@ under Ubuntu 22.04.2 LTS.
   cd rpi-zero
   ./build.sh
 ```
+
+the results are then found here:
+- buildroot/output/images/sdcard.img
+- buildroot/output/images/arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz
+
+The first is to be flashed to sdcard,
+the second is the SDK which is used to build Main_MiSTeX
