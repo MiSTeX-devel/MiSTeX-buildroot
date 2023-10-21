@@ -1,15 +1,8 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import (builtins.fetchTree { type = "github"; owner = "nixos"; repo = "nixpkgs"; rev = "fba68a9b964e961307237d7da745121f9bc00fa8"; } ) {} }:
 
-(pkgs.buildFHSEnv {
-  name = "simple-build-env";
-  targetPkgs = pkgs: (with pkgs; [
-    gnused
-    gawk
-    file
+pkgs.mkShell {
+  packages = with pkgs; [
     which
-    gnumake
-    perl
-    gcc12
     pkg-config
     cmake
     unzip
@@ -17,6 +10,5 @@
     cpio
     wget
     rsync
-  ]);
-  runScript = "bash";
-}).env
+  ];
+}
