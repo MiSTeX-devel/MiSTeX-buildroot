@@ -6,6 +6,7 @@
                 }) {} }:
 
 pkgs.mkShell {
+  NIX_HARDENING_ENABLE = "";
   packages = with pkgs; [
     which
     pkg-config
