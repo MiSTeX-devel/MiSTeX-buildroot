@@ -9,7 +9,7 @@ we decided to move to the raspberry pi zero.
 
 ## Building
 The raspberry pi zero buildroot builds successfully
-under Ubuntu 22.04.2 LTS.
+under Ubuntu 22.04.2 LTS. Uses about 18GB of disk space.
 
 ```
   sudo apt-get install -y git make build-essential file wget cpio unzip rsync bc dosfstools
