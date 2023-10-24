@@ -12,6 +12,9 @@ The raspberry pi zero buildroot builds successfully
 under Ubuntu 22.04.2 LTS.
 
 ```
+  sudo apt-get install -y git make build-essential file wget cpio unzip rsync bc dosfstools
+  git clone https://github.com/MiSTeX-devel/MiSTeX-buildroot.git
+  cd MiSTeX-buildroot
   git submodule init
   git submodule update
   cd rpi-zero
