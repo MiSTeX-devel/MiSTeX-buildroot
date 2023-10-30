@@ -7,6 +7,8 @@
 start_file=start.elf
 fixup_file=fixup.dat
 
+enable_uart=1
+
 kernel=zImage
 
 # To use an external initramfs file
